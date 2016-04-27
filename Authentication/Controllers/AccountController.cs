@@ -158,7 +158,7 @@ namespace Authentication.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     DateOfBirth = model.DateOfBirth,
-                    City = model.City,
+                    City = model.City
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

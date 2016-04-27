@@ -35,5 +35,6 @@ namespace Authentication.Models
         {
             return new ApplicationDbContext();
         }
+
     }
 }
