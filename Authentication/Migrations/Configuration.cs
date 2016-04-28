@@ -1,3 +1,4 @@
+using System.Web.Security;
 using Authentication.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -40,6 +41,7 @@ namespace Authentication.Migrations
                     DateOfBirth = new DateTime(03/29/1985),
                 };
 
+
                 var reid = new User
                 {
                     FirstName = "Reid",
@@ -56,7 +58,7 @@ namespace Authentication.Migrations
                     City = "Mulberry",
                     Email = "benjayhardy@gmail.com",
                     DateOfBirth = new DateTime(04/18/1985),
-                    Roles = { "Enhancement"}
+                    
                 };
 
                 userManager.Create(tesuansey, "Be@uchamp1");
@@ -64,6 +66,11 @@ namespace Authentication.Migrations
                 userManager.Create(benji, "B1anched0g");
 
                 
+
+                //Roles.AddUserToRole("tesuanseylink@gmail.com", "Admin");
+                //Roles.AddUserToRole("annahdier@gmail.com", "Developer");
+                //Roles.AddUserToRole("benjayhardy@gmail.com", "Developer");
+                //Roles.AddUserToRole("cbalexander7982@gmail.com", "Enhancement");
 
                 context.SaveChanges();
             }

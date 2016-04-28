@@ -36,6 +36,5 @@ namespace Authentication.Models
             return new ApplicationDbContext();
         }
 
-        //public System.Data.Entity.DbSet<Authentication.Models.User> ApplicationUsers { get; set; }
     }
 }
