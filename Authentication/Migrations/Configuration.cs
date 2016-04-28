@@ -18,40 +18,29 @@ namespace Authentication.Migrations
 
         protected override void Seed(Authentication.Models.ApplicationDbContext context)
         {
-            var userStore = new UserStore<ApplicationUser>(context);
-            var userManager = new UserManager<ApplicationUser>(userStore);
+            var userStore = new UserStore<User>(context);
+            var userManager = new UserManager<User>(userStore);
             var roleStore = new RoleStore<IdentityRole>(context);
             var roleManager = new RoleManager<IdentityRole>(roleStore);
-            //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
-            context.Roles.AddOrUpdate(r => r.Name,
-                new IdentityRole { Name = "Admin" },
-                new IdentityRole { Name = "Developer" },
-                new IdentityRole { Name = "Elf" }
-            );
-
+            if (!context.Roles.Any())
+            {
+                roleManager.Create(new IdentityRole("Admin"));
+                roleManager.Create(new IdentityRole("Developer"));
+                roleManager.Create(new IdentityRole("Enhancement"));
+            }
             if (!context.Users.Any())
             {
-                var tesuansey = new ApplicationUser
+                var tesuansey = new User
                 {
-                    FirstName = "Tesuansey",
+                    FirstName = "Te'suansey",
                     LastName = "Link",
                     City = "Hope",
                     Email = "tesuanseylink@gmail.com",
                     DateOfBirth = new DateTime(03/29/1985),
                 };
 
-                var reid = new ApplicationUser
+                var reid = new User
                 {
                     FirstName = "Reid",
                     LastName = "Hanna",
@@ -59,23 +48,25 @@ namespace Authentication.Migrations
                     Email = "annahdier@gmail.com",
                     DateOfBirth = new DateTime(09/11/1988),
                 };
-                var benji = new ApplicationUser
+
+                var benji = new User
                 {
-                    FirstName = "benji",
+                    FirstName = "Benji",
                     LastName = "Hardy",
                     City = "Mulberry",
                     Email = "benjayhardy@gmail.com",
                     DateOfBirth = new DateTime(04/18/1985),
+                    Roles = { "Enhancement"}
                 };
 
-                
                 userManager.Create(tesuansey, "Be@uchamp1");
                 userManager.Create(reid, "J0nesbeach!");
                 userManager.Create(benji, "B1anched0g");
 
+                
+
                 context.SaveChanges();
             }
-
         }
     }
 }

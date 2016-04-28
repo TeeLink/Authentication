@@ -80,6 +80,7 @@ namespace Authentication.Models
         public string LastName { get; set; }
 
         [Display(Name = "Date of Birth")]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
    
         [Display(Name = "Location (City)")]
@@ -124,5 +125,14 @@ namespace Authentication.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class InfoViewModel
+    {
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string City { get; set; }
     }
 }
