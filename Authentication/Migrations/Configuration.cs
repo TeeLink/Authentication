@@ -58,12 +58,23 @@ namespace Authentication.Migrations
                     City = "Mulberry",
                     Email = "benjayhardy@gmail.com",
                     DateOfBirth = new DateTime(04/18/1985),
-                    
                 };
+
+                var chasmine = new User
+                {
+                    FirstName = "Chasmine",
+                    LastName = "Alexander",
+                    City = "Benton",
+                    Email = "cbalexander7982@gmail.com",
+                    DateOfBirth = new DateTime(09/10/1991)
+
+                }
+                ;
 
                 userManager.Create(tesuansey, "Be@uchamp1");
                 userManager.Create(reid, "J0nesbeach!");
-                userManager.Create(benji, "B1anched0g");
+                userManager.Create(benji, "B!anched0g");
+                userManager.Create(chasmine, "C@yson123");
 
                 
 
